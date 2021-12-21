@@ -1,10 +1,10 @@
 #!/bin/bash
 
-REPO=$1
-if [[ $1 =~ .*/.* ]]; then
-  git clone "https://$REPO.git" || exit 1
+ARG=$1
+if [[ $1 =~ .*/.*/.* ]]; then
+  git clone "https://$ARG.git" || exit 1
 else
-  git clone "https://aur.archlinux.org/$REPO.git" || exit 1
+  git clone "https://aur.archlinux.org/$ARG.git" || exit 1
 fi
-cd "$(basename "${REPO}")" || exit 1
+cd "$(basename "${ARG}")" || exit 1
 makepkg -sf --noconfirm --skippgpcheck
